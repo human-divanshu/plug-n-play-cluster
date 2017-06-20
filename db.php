@@ -7,7 +7,6 @@
 function connect()
 {
 	$db = new PDO('mysql:host=localhost;dbname=cluster;charset=utf8', 'root', 'root');
-//	$db = new PDO('mysql:host=localhost;dbname=bestifdf_binary;charset=utf8', 'bestifdf_general', 'general@123');	
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 	return $db;
