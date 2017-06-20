@@ -1,0 +1,25 @@
+body{
+	padding-top:70px;
+}
+nav {
+	background-color:#0f0f59!important;
+	color:white!important;
+}
+nav li a {
+	color:white!important;
+}
+
+.navbar-default .navbar-brand {
+	color: white;
+	font-size: 15px;
+}
+.navbar-default .navbar-brand:hover{
+	color: yellow;
+}
+.navbar-default .navbar-nav > li > a {
+	font-size: 13px;
+}
+.navbar-default .navbar-nav > li > a:hover {
+	color: yellow!important;
+}
+
