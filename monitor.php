@@ -39,6 +39,7 @@ $(document).ready(function() {
 	setInterval(function(){
 		$.getJSON("cron.php", function(data, status){
         	console.log(JSON.stringify(data));
+          $("#fetched").find("tr:gt(0)").remove();
       if(data != '')
 			   $.each(data, function(key, val) {
     			    var tr=$('<tr></tr>');
