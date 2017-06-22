@@ -37,7 +37,7 @@
 
       // No of lines per 5MB.
       $splits = ($lines / $size) * 5000000;
-
+      $splits = ceil($splits);
       // Splitting linewise
       $command = "split -d -l ".$splits." ".$file_name." new";
     }
