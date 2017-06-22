@@ -25,7 +25,7 @@
 
     if($extension == '.txt'){
       $splits = 5;
-      $command = "split --bytes=".$splits."M ".$file_name." new";
+      $command = "split -d --bytes=".$splits."M ".$file_name." new";
     }
 
     elseif($extension == '.csv' || $extension == '.tsv'){
@@ -39,7 +39,7 @@
       $splits = ($lines / $size) * 5000000;
 
       // Splitting linewise
-      $command = "split -l".$splits." ".$file_name." new";
+      $command = "split -d -l ".$splits." ".$file_name." new";
     }
 
     exec($command);
