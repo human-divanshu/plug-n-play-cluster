@@ -5,7 +5,7 @@
   * TAKES FILE NAME AS COMMAND LINE ARGUMENT
   */
 	
-	inclue("confi.php");
+	include("conf.php");
 
 	// checking for filename
 	if($argc == 1){
@@ -20,7 +20,7 @@
 	$path = pathinfo($file_name);
 	$extension = $path['extension'];
 
-	$command = "split -d --lines-bytes=".$splits["size"]." ".$file_name." new";
+	$command = "split -d --line-bytes=".$splits["size"]." ".$file_name." new";
 	exec($command); 
 	
 ?>
