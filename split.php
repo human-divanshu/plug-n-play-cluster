@@ -16,11 +16,7 @@
 	// file name
 	$file_name = $argv[1];
 
-	// extracting the extension
-	$path = pathinfo($file_name);
-	$extension = $path['extension'];
-
-	$command = "split -d --line-bytes=".$splits["size"]." ".$file_name." new";
+	$command = "split -d --line-bytes=".$conf["splitsize"]." ".$file_name." new";
 	exec($command); 
 	
 ?>
