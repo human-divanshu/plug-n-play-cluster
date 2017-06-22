@@ -19,13 +19,31 @@
 
   // file size
   $size = filesize($file_name);
-  
-  // testing
-  $file = fopen($file_name, "r");
-  $size = ceil($size / 1000000);
-  $workers = 6;
-  $splits = ceil($size / $workers);
-  $command = "split --bytes=".$splits."M ".$file_name." new";
 
-  exec($command);
+  // only split is file is greater than 50000 bytes.
+  if($size >= 5000000){
+
+    if($extension == '.txt'){
+      $splits = 5;
+      $command = "split --bytes=".$splits."M ".$file_name." new";
+    }
+
+    elseif($extension == '.csv' || $extension == '.tsv'){
+
+      // Finding the number of lines in the csv file without loading the entire file in the memory.
+      $file = new SplFileObject($file_name, 'r');
+      $file -> seek(PHP_INT_MAX);
+      $lines = $file -> key() + 1;
+
+      // No of lines per 5MB.
+      $splits = ($lines / $size) * 5000000;
+
+      // Splitting linewise
+      $command = "split -l".$splits." ".$file_name." new";
+    }
+
+    exec($command);
+
+  }
+
 ?>
