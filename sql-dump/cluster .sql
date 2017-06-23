@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2017 at 05:13 PM
+-- Generation Time: Jun 23, 2017 at 10:12 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.18-0ubuntu0.16.04.1
 
@@ -27,11 +27,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `job` (
-  `Job_ID` int(8) NOT NULL,
-  `Input_File` varchar(50) NOT NULL,
-  `Process_File` varchar(50) NOT NULL,
-  `Aggregate_File` varchar(50) NOT NULL
+  `job_id` int(8) NOT NULL,
+  `input_file` varchar(50) NOT NULL,
+  `process_func_file` varchar(50) NOT NULL,
+  `aggregate_func_file` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job`
+--
+
+INSERT INTO `job` (`job_id`, `input_file`, `process_func_file`, `aggregate_func_file`) VALUES
+(1, '1.txt', 'foo.js', 'bar.php'),
+(2, '1.txt', 'foo.js', 'bar.php');
 
 -- --------------------------------------------------------
 
@@ -42,8 +50,9 @@ CREATE TABLE `job` (
 CREATE TABLE `tasks` (
   `job_id` int(8) NOT NULL,
   `task_id` int(8) NOT NULL,
-  `task_name` varchar(50) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `task_file_name` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `worker_ip` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -66,7 +75,7 @@ CREATE TABLE `workers` (
 -- Indexes for table `job`
 --
 ALTER TABLE `job`
-  ADD PRIMARY KEY (`Job_ID`);
+  ADD PRIMARY KEY (`job_id`);
 
 --
 -- Indexes for table `tasks`
@@ -90,17 +99,17 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `Job_ID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `job_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `task_id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `worker_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `worker_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
