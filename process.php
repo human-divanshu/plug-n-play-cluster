@@ -1,7 +1,6 @@
 <?php
 
 	include('split.php');
-	include('db.php');
 	include('conf.php');
 	include('job-create.php');
 
@@ -12,26 +11,22 @@
 
 	$file_name = $argv[1];
 	$processing = $argv[2];
-	$aggregate = $argv[3];
-
-	// Reading job_id from conf file.
-	$folder = $conf['job_id'];
+	$aggregate = $argv[3];		
 	
-	// Creating an entry in the table
-	$insert_query = "insert into job values("$folder.",".$input.",".$processing.",".$aggregate.")";
-	query($insert_query);
+	// Adds the created job to the table
+	jobCreate($file_name, $processing, $aggregate);	
 	
-	// Incrementing the job_id
-	$conf['job_id'] = $folder + 1;
+	// Folder name is job_id
+	$folder = lastId();
 
 	// Making a folder with the name of the job_id
 	$dir = "mkdir jobs/".$folder;
 	exec($dir);
 
 	// Splitting the file 
-	split($file_name, $folder)
+	split($file_name, $folder);
 
 	// returns an array containing the name of all the tasks for a given job
 	$tasks = tasksToArray($folder);
-
+	
 ?>
