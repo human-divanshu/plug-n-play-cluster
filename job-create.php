@@ -2,10 +2,10 @@
 
 	include('db.php');
 
-	function jobCreate($folder, $input, $processing, $aggregate){
+	function jobCreate($input, $processing, $aggregate){
 	
 		// Creating an entry in the table
-		$insert_query = "insert into job values(".$folder.",".$input.",".$processing.",".$aggregate.")";
+		$insert_query = "insert into job(Input_File, Process_File, Aggregate_File) values(".$input.",".$processing.",".$aggregate.")";
 		query($insert_query);
 		
 	}
@@ -14,7 +14,7 @@
 	
 		
 		// using the ls function to write the names of all tasks into a file.
-		$file_command = "ls /jobs/".$job_id." > file_list.txt";
+		$file_command = "ls jobs/".$job_id." > file_list.txt";
 		exec($file_command);
 
 		// adding the task names into an array

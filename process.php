@@ -11,16 +11,13 @@
 
 	$file_name = $argv[1];
 	$processing = $argv[2];
-	$aggregate = $argv[3];
-
-	// Reading job_id from conf file.
-	$folder = $conf['job_id'];	
+	$aggregate = $argv[3];		
 	
 	// Adds the created job to the table
-	//#jobCreate($folder, $input, $processing, $aggregate);
+	jobCreate($input, $processing, $aggregate);	
 	
-	// Incrementing the job_id
-	$conf['job_id'] = $folder + 1;
+	// Folder name is job_id
+	$folder = // Need the jobid of last inserted row.
 
 	// Making a folder with the name of the job_id
 	$dir = "mkdir jobs/".$folder;
