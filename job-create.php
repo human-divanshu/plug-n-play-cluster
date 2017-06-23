@@ -3,7 +3,8 @@
 	require_once('db.php');
 
 	function lastID(){
-	
+
+		// Used to retrieve the job_id of last added job.	
 		$sql = "SELECT job_id FROM job where Job_ID = (SELECT MAX(Job_ID) FROM job)";
 		$returned = query($sql)[0];
 		return $returned["job_id"];
@@ -18,8 +19,7 @@
 		
 	}
 
-	function tasksToArray($job_id){
-	
+	function tasksToArray($job_id){	
 		
 		// using the ls function to write the names of all tasks into a file.
 		$file_command = "ls jobs/".$job_id." > file_list.txt";
