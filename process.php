@@ -17,7 +17,7 @@
 	jobCreate($input, $processing, $aggregate);	
 	
 	// Folder name is job_id
-	$folder = // Need the jobid of last inserted row.
+	$folder = lastId();
 
 	// Making a folder with the name of the job_id
 	$dir = "mkdir jobs/".$folder;

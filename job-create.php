@@ -1,12 +1,18 @@
 <?php
 
-	include('db.php');
+	require_once('db.php');
+
+	function lastID(){
+	
+		$sql = "SELECT Job_ID FROM job where Job_ID = (SELECT MAX(Job_ID) FROM job)";
+		return query($sql);
+	}
 
 	function jobCreate($input, $processing, $aggregate){
 	
 		// Creating an entry in the table
 		$insert_query = "insert into job(Input_File, Process_File, Aggregate_File) values(".$input.",".$processing.",".$aggregate.")";
-		query($insert_query);
+		update($insert_query);
 		
 	}
 
@@ -24,7 +30,7 @@
 		// inserting file names in the table 'tasks'
 		foreach( $temp as $array){
 			$sql_query = "insert into tasks(job_id,task_id,task_name,status) values(".$job_id.",".$temp.", ready)";
-			query($sql_query);
+			update($sql_query);
 		}
 		return $array;
 	}		
