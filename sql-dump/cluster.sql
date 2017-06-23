@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2017 at 05:02 PM
+-- Generation Time: Jun 23, 2017 at 05:13 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.18-0ubuntu0.16.04.1
 
@@ -30,7 +30,7 @@ CREATE TABLE `job` (
   `Job_ID` int(8) NOT NULL,
   `Input_File` varchar(50) NOT NULL,
   `Process_File` varchar(50) NOT NULL,
-  `Aggregate_FIle` varchar(50) NOT NULL
+  `Aggregate_File` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -40,8 +40,8 @@ CREATE TABLE `job` (
 --
 
 CREATE TABLE `tasks` (
-  `Job_ID` int(8) NOT NULL,
-  `Task_ID` int(8) NOT NULL,
+  `job_id` int(8) NOT NULL,
+  `task_id` int(8) NOT NULL,
   `task_name` varchar(50) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -72,8 +72,8 @@ ALTER TABLE `job`
 -- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD PRIMARY KEY (`Task_ID`),
-  ADD UNIQUE KEY `Job_ID` (`Job_ID`,`Task_ID`);
+  ADD PRIMARY KEY (`task_id`),
+  ADD UNIQUE KEY `Job_ID` (`job_id`,`task_id`);
 
 --
 -- Indexes for table `workers`
@@ -95,7 +95,7 @@ ALTER TABLE `job`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `Task_ID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `task_id` int(8) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `workers`
 --

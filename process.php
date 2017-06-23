@@ -14,7 +14,7 @@
 	$aggregate = $argv[3];		
 	
 	// Adds the created job to the table
-	jobCreate($input, $processing, $aggregate);	
+	jobCreate($file_name, $processing, $aggregate);	
 	
 	// Folder name is job_id
 	$folder = lastId();
