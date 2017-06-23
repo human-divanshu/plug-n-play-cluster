@@ -7,16 +7,11 @@
 	
 	include("conf.php");
 
-	// checking for filename
-	if($argc == 1){
-		echo('No file name found.');
-		exit();
-	}
-	
-	// file name
-	$file_name = $argv[1];
+	function split($file_name, $folder){
 
-	$command = "split -d --line-bytes=".$conf["splitsize"]." ".$file_name." new";
-	exec($command); 
+		$command = "split -d --line-bytes=".$conf["splitsize"]." ".$file_name." jobs/".$folder."/task";
+		exec($command); 
+
+	}
 	
 ?>

@@ -3,6 +3,7 @@
 	include('split.php');
 	include('db.php');
 	include('conf.php');
+	include('job-create.php');
 
 	if($argc != 4){
 		echo("Please enter 3 input files!");
@@ -22,12 +23,15 @@
 	
 	// Incrementing the job_id
 	$conf['job_id'] = $folder + 1;
-	
+
 	// Making a folder with the name of the job_id
-	$dir = "mkdir ".$folder;
+	$dir = "mkdir jobs/".$folder;
 	exec($dir);
 
 	// Splitting the file 
 	split($file_name, $folder)
+
+	// returns an array containing the name of all the tasks for a given job
+	$tasks = tasksToArray($folder);
 
 ?>
