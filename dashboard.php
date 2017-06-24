@@ -40,8 +40,13 @@ $(document).ready(function() {
 	// presence every 5 second
 	setInterval(function(){
 		$.get("update.php", function(data, status){
+        	//console.log(data);
+    	});
+	}, 5000);
+
+	setInterval(function(){
+		$.get("getjob.php", function(data, status){
         	console.log(data);
-			//console.log("foo");
     	});
 	}, 5000);
 
