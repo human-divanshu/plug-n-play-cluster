@@ -41,6 +41,7 @@ $(document).ready(function() {
 	setInterval(function(){
 		$.get("update.php", function(data, status){
         	console.log(data);
+			//console.log("foo");
     	});
 	}, 5000);
 

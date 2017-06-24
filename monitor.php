@@ -21,6 +21,7 @@
     					<td><b>Worker ID</b></td>
     					<td><b>Worker IP</b></td>
     					<td><b>Last Ping</b></td>
+						<td><b>Status</b></td>
     				</tr>
     			</table>
     		</div>
