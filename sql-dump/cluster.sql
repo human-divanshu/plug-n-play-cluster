@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2017 at 10:12 PM
+-- Generation Time: Jun 24, 2017 at 08:44 AM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.18-0ubuntu0.16.04.1
 
@@ -52,7 +52,7 @@ CREATE TABLE `tasks` (
   `task_id` int(8) NOT NULL,
   `task_file_name` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `worker_ip` varchar(100) NOT NULL
+  `worker_ip` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
