@@ -8,7 +8,9 @@
 	}
 	$file_name = $argv[1];
 	$processing = $argv[2];
-	$aggregate = $argv[3];		
+	$aggregate = $argv[3];
+	$path_info = pathinfo($file_name);
+	$file_extension = $path_info['extension'];		
 	
 	// Adds the created job to the table
 	jobCreate($file_name, $processing, $aggregate);	
@@ -19,7 +21,7 @@
 	$dir = "mkdir jobs/".$folder;
 	exec($dir);
 	// Splitting the file 
-	split($file_name, $folder);
+	split($file_name, $folder, $file_extension);
 	// returns an array containing the name of all the tasks for a given job
 	$tasks = tasksToArray($folder);
 	
