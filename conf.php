@@ -1,8 +1,8 @@
 <?php
 
 // If Auth is true then passwordless access.
-// Splitsize is used to determine the size of each task
+// Splitsize is used to determine the size of each task in bytes
 $conf = array("auth" => true,
 			  "pass" => "abc",
-			  "splitsize" => 100);
+			  "splitsize" => "1MB");
 ?>

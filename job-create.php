@@ -14,13 +14,13 @@
 		update($insert_query);
 		
 	}
-	function tasksToArray($job_id){	
+	function tasksToArray($job_id, $extension){	
 		
 		// directory where the files are stored
 		$task_dir = "jobs/".$job_id;
 		$len = strlen($task_dir);
 		
-		$array = glob($task_dir."/*");
+		$array = glob($task_dir."/*.".$extension);
 
 		// adding the task names into an array		
 		foreach($array as $task_file){

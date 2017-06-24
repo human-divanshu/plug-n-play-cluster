@@ -20,9 +20,11 @@
 	// Making a folder with the name of the job_id
 	$dir = "mkdir jobs/".$folder;
 	exec($dir);
+	$dir = "mkdir jobs/".$folder."/processed_files";
+	exec($dir);
 	// Splitting the file 
 	split($file_name, $folder, $file_extension);
 	// returns an array containing the name of all the tasks for a given job
-	$tasks = tasksToArray($folder);
+	$tasks = tasksToArray($folder,$file_extension);
 	
 ?>
