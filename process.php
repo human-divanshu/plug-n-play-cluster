@@ -20,8 +20,10 @@
 	// Making a folder with the name of the job_id
 	$dir = "mkdir jobs/".$folder;
 	exec($dir);
-	$dir = "mkdir jobs/".$folder."/processed_files";
+	$dir = "mkdir processed_files/".$folder;
 	exec($dir);
+	$comm = "chmod 777 processed_files/".$folder;
+	exec($comm);
 	// Splitting the file 
 	split($file_name, $folder, $file_extension);
 	// returns an array containing the name of all the tasks for a given job

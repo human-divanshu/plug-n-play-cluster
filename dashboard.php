@@ -49,10 +49,10 @@ function processjob(data){
 	var processed = {};
 	processed["job_id"] = JSON.parse(data).job_id;
 	processed["task_id"] = JSON.parse(data).task_id;
-	processed["file"] = JSON.parse(data).file;
-	processed["processed"] = task;
-	console.log(processed);
-	$.get("task.php?data="+JSON.stringify(processed),function(returndata, status){
+	processed["file_name"] = JSON.parse(data).file;
+	processed["process"] = task;
+	console.log(JSON.stringify(processed));
+	$.get("task.php?processed="+JSON.stringify(processed),function(returndata, status){
 		console.log(returndata);
 	});
 
