@@ -39,11 +39,11 @@ var x;
 // This function will process the job.
 function processjob(data){
 	clearInterval(x);
-	//console.log(JSON.parse(data).content);
-	
+		
 	// Object for the processor.
 	var task = {};	
 	eval(JSON.parse(data).process);
+
 	// Preparing the data to be stored as a file.
 	var processed = {};
 	processed["job_id"] = JSON.parse(data).job_id;
@@ -52,7 +52,7 @@ function processjob(data){
 	processed["process"] = task;
 	console.log(JSON.stringify(processed));
 	$.post("task.php",JSON.stringify(processed),function(returndata, status){
-		console.log(returndata);
+		//console.log(returndata);
 	});
 	checkjob();
 }
@@ -61,7 +61,6 @@ function processjob(data){
 function checkjob(){
 	x = setInterval(function(){
 		$.get("getjob.php",function(data, status){
-			//console.log(data);
 			if(JSON.parse(data).message == true){
 				processjob(data);
 			}
@@ -74,7 +73,7 @@ $(document).ready(function() {
 	// presence every 5 second
 	setInterval(function(){
 		$.get("update.php", function(data, status){
-        	//console.log(data);
+        	
     	});
 	}, 5000);
 	// checks for the job.
