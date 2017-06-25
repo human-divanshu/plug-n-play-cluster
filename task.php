@@ -10,6 +10,15 @@
 
 	$sqli = "UPDATE tasks set status = 2 where job_id = ".$_POST["job_id"]." AND task_id = ".$_POST["task_id"];
 	update($sqli);
-	echo $sqli;
+	//echo $sqli;
+
+	$sql = "SELECT * from tasks where job_id = ".$_POST["job_id"]." AND status != 2";
+	$result = query($sql);
+	//var_dump($result);
+	
+	if(empty($result)){
+		echo "tasks done";
+		// Call Aggregator;
+	}
 			
 ?>
