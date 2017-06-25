@@ -53,7 +53,7 @@ function processjob(data){
 	processed["process"] = task;
 	console.log(JSON.stringify(processed));
 	$.get("task.php?processed="+JSON.stringify(processed),function(returndata, status){
-		console.log(returndata);
+		//console.log(returndata);
 	});
 
 	checkjob();
@@ -65,6 +65,7 @@ function processjob(data){
 function checkjob(){
 	x = setInterval(function(){
 		$.get("getjob.php",function(data, status){
+			//console.log(data);
 			if(JSON.parse(data).message == true){
 				processjob(data);
 			}
