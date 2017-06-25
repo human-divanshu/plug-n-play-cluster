@@ -33,11 +33,13 @@
 <?php require_once("footer.php"); ?>
     
 <script>
+
 var x;
+
 // This function will process the job.
 function processjob(data){
 	clearInterval(x);
-	//console.log(data);
+	//console.log(JSON.parse(data).content);
 	
 	// Object for the processor.
 	var task = {};	
@@ -50,10 +52,11 @@ function processjob(data){
 	processed["process"] = task;
 	console.log(JSON.stringify(processed));
 	$.get("task.php",JSON.stringify(processed),function(returndata, status){
-		//console.log(returndata);
+		console.log(returndata);
 	});
 	checkjob();
 }
+
 // This function checks for the job and if found then it processes the job.
 function checkjob(){
 	x = setInterval(function(){
@@ -65,6 +68,7 @@ function checkjob(){
 		});
 	}, 5000);
 }
+
 $(document).ready(function() {
 	// update server about your
 	// presence every 5 second
