@@ -50,9 +50,9 @@ function processjob(data){
 	processed["task_id"] = JSON.parse(data).task_id;
 	processed["file_name"] = JSON.parse(data).file;
 	processed["process"] = task;
-	console.log(JSON.stringify(processed));
-	$.post("task.php",JSON.stringify(processed),function(returndata, status){
-		//console.log(returndata);
+	//console.log(JSON.stringify(processed));
+	$.post("task.php",processed,function(returndata, status){
+		console.log(returndata);
 	});
 	checkjob();
 }
