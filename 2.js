@@ -1,4 +1,4 @@
-function process(){
+
 	var input = JSON.parse(data).content;
 	var res = input.split(/\s+/);
 	var i;
@@ -14,5 +14,5 @@ function process(){
 			task[word] =1;
 		}
 	}
-	console.log(task);
-}
+	//console.log(task);
+
