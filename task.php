@@ -2,23 +2,23 @@
 
 	include_once("db.php");
 	
-	$str = json_encode($_POST["process"]);
-	//echo("echo ".$str."> processed_files/".$_POST["job_id"]."/".$_POST["file_name"]);
-	// echo json_encode($_POST["process"]);	
-	$comm = "echo ".$str."> processed_files/".$_POST["job_id"]."/".$_POST["file_name"];
-	exec($comm);
+	$str = $_POST["process"];
+	
+	file_put_contents("processed_files/".$_POST["job_id"]."/".$_POST["file_name"], $str);
 
 	$sqli = "UPDATE tasks set status = 2 where job_id = ".$_POST["job_id"]." AND task_id = ".$_POST["task_id"];
 	update($sqli);
-	//echo $sqli;
 
 	$sql = "SELECT * from tasks where job_id = ".$_POST["job_id"]." AND status != 2";
 	$result = query($sql);
-	//var_dump($result);
+	
 	
 	if(empty($result)){
 		echo "tasks done";
 		// Call Aggregator;
+
+		$sqls = "UPDATE job set status = 2 where job_id = ".$_POST["job_id"];
+		update($sqls);
 	}
 			
 ?>
