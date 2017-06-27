@@ -39,9 +39,9 @@ var x;
 // This function will process the job.
 function processjob(data){
 	clearInterval(x);
-		
-	// Object for the processor.
-	var task = {};	
+	
+	// Variable to store the processed data.
+	var return_data = "";		
 	eval(JSON.parse(data).process);
 
 	// Preparing the data to be stored as a file.
@@ -49,8 +49,7 @@ function processjob(data){
 	processed["job_id"] = JSON.parse(data).job_id;
 	processed["task_id"] = JSON.parse(data).task_id;
 	processed["file_name"] = JSON.parse(data).file;
-	processed["process"] = task;
-	//console.log(JSON.stringify(processed));
+	processed["process"] = return_data;
 	$.post("task.php",processed,function(returndata, status){
 		console.log(returndata);
 	});
