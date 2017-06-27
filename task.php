@@ -1,6 +1,7 @@
 <?php	
 
 	include_once("db.php");
+	include("aggregate.php");
 	
 	$str = $_POST["process"];
 	
@@ -14,9 +15,8 @@
 	
 	
 	if(empty($result)){
-		echo "tasks done";
-		// Call Aggregator;
-
+		echo "job complete";		
+		aggregate($_POST["job_id"]);
 		$sqls = "UPDATE job set status = 2 where job_id = ".$_POST["job_id"];
 		update($sqls);
 	}

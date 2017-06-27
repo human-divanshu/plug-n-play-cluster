@@ -38,14 +38,16 @@ $(document).ready(function() {
 	// delete non-active workers from the cluster
 	// every 5 seconds
 	setInterval(function(){
+
 	// getting JSON - worker id, worker ip, last ping's time
 	$.getJSON("cron.php", function(data, status){
-    //console.log(JSON.stringify(data));
+   
 
     // removing all rows except the table header
     $("#fetched").find("tr:gt(0)").remove();
-    if(data != '')
-      // appending the recieved JSON to the table
+
+	// appending the recieved JSON to the table
+    if(data != '')      
       $.each(data, function(key, val) {
       var tr=$('<tr></tr>');
       $.each(val, function(k, v){
