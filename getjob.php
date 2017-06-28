@@ -16,6 +16,8 @@ try {
 		update($sql);
 		$sql = "UPDATE workers set status = 1 where worker_ip = '".$_SERVER['REMOTE_ADDR']."'";
 		update($sql);
+		$sql = "UPDATE job set status = 1 where job_id = ".$result[0]["job_id"];
+		update($sql);
 
 		$data["message"] = true;		
 		$dir = "./jobs/".$result[0]["job_id"];

@@ -1,4 +1,7 @@
 
+function process() 
+{
+	task = {};
 	var input = JSON.parse(data).content;
 	var res =  input.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
 	var i;
@@ -14,5 +17,14 @@
 			task[word] =1;
 		}
 	}
-	//console.log(task);
-
+	
+	var str = "";	
+	for(var key in task){
+		var t = key+"	"+task[key]+"\n";
+		str = str.concat(t);
+		//console.log(str);
+	}
+	
+	return_data = str;
+}
+process();
