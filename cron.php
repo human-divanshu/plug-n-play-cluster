@@ -13,7 +13,7 @@
 		$sql = "select * from workers";
 		$workers_data = query($sql);
 	
-		$sql = "select * from tasks";
+		$sql = "select * from tasks order by job_id desc";
 		$tasks_data = query($sql);
 
 

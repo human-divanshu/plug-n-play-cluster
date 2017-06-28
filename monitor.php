@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 	// getting JSON - worker id, worker ip, last ping's time
 	   $.getJSON("cron.php", function(data, status){
-    console.log((data.workers));
+    console.log(data);
 
     // removing all rows except the table header
     $("#fetched").find("tr:gt(0)").remove();
